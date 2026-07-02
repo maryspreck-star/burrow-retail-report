@@ -83,14 +83,11 @@ body {
 .pacing-bar-fill  { height: 100%; border-radius: 4px; }
 .fill-ahead { background: #1A7F5A; } .fill-on { background: #2B52CC; } .fill-risk { background: #C47A15; }
 .pacing-nums { font-size: 11px; color: #6B718F; }
-.hs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
-.hs-card { background: white; border: 1px solid #D5D9E8; border-radius: 6px; padding: 14px 16px; }
-.hs-store { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #6B718F; margin-bottom: 4px; }
-.hs-pct { font-size: 26px; font-weight: 700; color: #1A1E2E; }
-.hs-bar-track { background: #EBEDF5; border-radius: 4px; height: 6px; overflow: hidden; margin: 8px 0 6px; }
-.hs-bar-fill { height: 100%; border-radius: 4px; background: #2B52CC; }
-.hs-bar-fill.over { background: #1A7F5A; }
-.hs-nums { font-size: 11px; color: #6B718F; }
+.hs-section-header {
+  font-size: 15px; font-weight: 700; color: #1C2646; letter-spacing: -0.2px;
+  margin: 28px 0 12px; padding-bottom: 10px;
+  border-bottom: 2px solid #2B52CC;
+}
 .footer {
   padding: 16px 28px; font-size: 11px; color: #8C93B0;
   border-top: 1px solid #D5D9E8; margin-top: 8px;
@@ -232,51 +229,6 @@ body {
   </div>
 
   
-  <div class="section-label">MTD Pacing to Plan &mdash; Jul 2026</div>
-  <div class="pacing-grid">
-    
-      <div class="pacing-card">
-        <div class="pacing-store">Soho</div>
-        <div class="pacing-actual">$2,259</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:36%;"></div>
-        </div>
-        <div class="pacing-nums">36% of plan &nbsp;·&nbsp; Plan: $6,300</div>
-      </div>
-    
-      <div class="pacing-card">
-        <div class="pacing-store">Boston</div>
-        <div class="pacing-actual">$3,067</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:75%;"></div>
-        </div>
-        <div class="pacing-nums">75% of plan &nbsp;·&nbsp; Plan: $4,092</div>
-      </div>
-    
-      <div class="pacing-card">
-        <div class="pacing-store">Chicago</div>
-        <div class="pacing-actual">$0</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:0%;"></div>
-        </div>
-        <div class="pacing-nums">0% of plan &nbsp;·&nbsp; Plan: $4,417</div>
-      </div>
-    
-      <div class="pacing-card">
-        <div class="pacing-store">Los Angeles</div>
-        <div class="pacing-actual">$0</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:0%;"></div>
-        </div>
-        <div class="pacing-nums">0% of plan &nbsp;·&nbsp; Plan: $2,208</div>
-      </div>
-  </div>
-
-  
   <div class="section-label">MTD Store Traffic &mdash; Jul 2026</div>
   <div class="pacing-grid">
       <div class="pacing-card">
@@ -344,14 +296,6 @@ body {
 </script>
   
   
-  
-  <div class="section-label">Sales Associates &mdash; MTD Jul 1–1</div>
-  <table class="tbl">
-    <thead>
-      <tr><th>Store</th><th>Associate</th><th>Revenue</th><th>Orders</th><th>AOV</th><th>Units</th></tr>
-    </thead>
-    <tbody><tr><td rowspan="1" style="font-weight:700;vertical-align:top;padding-top:11px;">Soho</td><td style="text-align:left;">Aaron Bullard</td><td>$2,259</td><td>2</td><td>$1,130</td><td>2</td></tr><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Boston</td><td style="text-align:left;">Boston Burrow</td><td>$1,787</td><td>1</td><td>$1,787</td><td>1</td></tr><tr><td style="text-align:left;">Casie Eifrig</td><td>$1,280</td><td>1</td><td>$1,280</td><td>1</td></tr></tbody>
-  </table>
   
 
 </div>
