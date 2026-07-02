@@ -21,6 +21,7 @@ body {
 .perf-summary {
   background: white; border: 1px solid #D5D9E8; border-radius: 6px;
   padding: 16px 20px; font-size: 13px; line-height: 1.7; color: #2C3252;
+  text-align: center;
 }
 .perf-summary p { margin-bottom: 10px; }
 .perf-summary p:last-child { margin-bottom: 0; }
@@ -45,15 +46,6 @@ body {
 .kpi-val { font-size: 14px; font-weight: 600; }
 .kpi-delta { font-size: 11px; color: #6B718F; margin-top: 1px; }
 .pos { color: #1A7F5A; } .neg { color: #B84040; } .neutral { color: #6B718F; }
-.plan-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid #EBEDF5; }
-.plan-header {
-  display: flex; justify-content: space-between; font-size: 11px;
-  color: #6B718F; margin-bottom: 6px;
-}
-.plan-bar-track { background: #EBEDF5; border-radius: 3px; height: 7px; overflow: hidden; }
-.plan-bar-fill  { background: #2B52CC; height: 100%; border-radius: 3px; }
-.plan-bar-fill.over { background: #1A7F5A; }
-.plan-detail { font-size: 11px; color: #6B718F; margin-top: 5px; text-align: right; }
 .tbl {
   width: 100%; border-collapse: collapse; background: white;
   border: 1px solid #D5D9E8; border-radius: 6px; overflow: hidden;
@@ -120,7 +112,7 @@ body {
 
 <div class="content">
 
-  <div class="section-label">Performance Summary</div><div class="perf-summary"><p>MTD retail revenue of $5,326 is tracking −69% vs plan and ▼ 77% vs last year through July 1. Last week (Jun 25–1) came in at $81,813, ahead of plan and ▲ 34% vs LY (44 orders, AOV $1,859). Yesterday (Wed Jul 1): $5,326 — ▼ 77% vs LY, −69% vs plan, 4 orders.</p><p>Store MTD breakdown: Boston ($3,067, −25% vs plan, ▼ 81% vs LY); Soho ($2,259, −64% vs plan, ▼ 38% vs LY); Chicago ($0, −100% vs plan, ▼ 100% vs LY); Los Angeles ($0, −100% vs plan).</p></div>
+  <div class="section-label">Performance Summary</div><div class="perf-summary"><p>MTD retail revenue of $5,326 is tracking −69% vs plan and ▼ 77% vs last year through July 1. Last week (Jun 25–Jul 1) came in at $81,813, −27% vs plan and ▲ 34% vs LY (44 orders, AOV $1,859). Yesterday (Wed Jul 1): $5,326 — ▼ 77% vs LY, −69% vs plan, 4 orders.</p><p>Store MTD breakdown: Boston ($3,067, −25% vs plan, ▼ 81% vs LY); Soho ($2,259, −64% vs plan, ▼ 38% vs LY); Chicago ($0, −100% vs plan, ▼ 100% vs LY); Los Angeles ($0, −100% vs plan).</p></div>
 
   <div class="section-label">Performance Overview</div>
   <div class="period-grid">
@@ -148,20 +140,10 @@ body {
           <div class="kpi-delta"><span class="neg">▼ 14% vs LY</span></div>
         </div>
       </div>
-      <div class="plan-section">
-        <div class="plan-header">
-          <span>vs Plan (Jul 1)</span>
-          <strong class="neg">−69%</strong>
-        </div>
-        <div class="plan-bar-track">
-          <div class="plan-bar-fill" style="width:31%;"></div>
-        </div>
-        <div class="plan-detail">$5,326 / $17,017 plan</div>
-      </div>
     </div>
     
     <div class="card">
-      <div class="card-period">Last Week &mdash; Jun 25–1</div>
+      <div class="card-period">Last Week &mdash; Jun 25–Jul 1</div>
       <div class="kpi">
         <span class="kpi-name">Revenue</span>
         <div class="kpi-right">
@@ -182,16 +164,6 @@ body {
           <div class="kpi-val">$1,859</div>
           <div class="kpi-delta"><span class="pos">▲ 37% vs LY</span></div>
         </div>
-      </div>
-      <div class="plan-section">
-        <div class="plan-header">
-          <span>vs Plan (Jun 25–1, 2026)</span>
-          <strong class="pos">+381%</strong>
-        </div>
-        <div class="plan-bar-track">
-          <div class="plan-bar-fill over" style="width:100%;"></div>
-        </div>
-        <div class="plan-detail">$81,813 / $17,017 plan</div>
       </div>
     </div>
     
@@ -218,16 +190,6 @@ body {
           <div class="kpi-delta"><span class="neg">▼ 14% vs LY</span></div>
         </div>
       </div>
-      <div class="plan-section">
-        <div class="plan-header">
-          <span>vs Plan (Jul 1–1)</span>
-          <strong class="neg">−69%</strong>
-        </div>
-        <div class="plan-bar-track">
-          <div class="plan-bar-fill" style="width:31%;"></div>
-        </div>
-        <div class="plan-detail">$5,326 / $17,017 plan</div>
-      </div>
     </div>
   </div>
 
@@ -238,7 +200,7 @@ body {
       <tr>
         <th>Store</th>
         <th>Yesterday</th><th>vs LY</th>
-        <th class="col-divider">Last Week (Jun 25–1)</th><th>vs LY</th>
+        <th class="col-divider">Last Week (Jun 25–Jul 1)</th><th>vs LY</th>
         <th class="col-divider">MTD</th><th>vs Plan</th><th>vs LY</th>
       </tr>
     </thead>
@@ -259,6 +221,14 @@ body {
       <tr><td><span class="store-name">Los Angeles</span></td><td>$0</td><td><span class="neg">–</span></td><td class="col-divider">$16,738</td><td><span class="neg">▼ 13%</span></td><td class="col-divider">$0</td><td><span class="neg">−100%</span></td><td><span class="neg">–</span></td></tr>
     </tbody>
   </table>
+
+  <div class="section-label">MTD Daily Revenue &mdash; Jul 2026</div>
+  <div class="chart-wrap">
+    <div class="chart-legend">
+      <span><span class="dot" style="background:#2B52CC;"></span>Actual Revenue</span>
+    </div>
+    <canvas id="dailyChart" style="width:100%;height:auto;display:block;"></canvas>
+  </div>
 
   
   <div class="section-label">MTD Pacing to Plan &mdash; Jul 2026</div>
@@ -305,15 +275,6 @@ body {
       </div>
   </div>
 
-  <div class="section-label">MTD Daily Revenue vs Plan &mdash; Jul 2026</div>
-  <div class="chart-wrap">
-    <div class="chart-legend">
-      <span><span class="dot" style="background:#2B52CC;"></span>Actual Revenue</span>
-      <span><span class="dot" style="background:#C8CEDE;"></span>Daily Plan</span>
-    </div>
-    <canvas id="dailyChart" style="width:100%;height:auto;display:block;"></canvas>
-  </div>
-
   
   
   <div class="section-label">Sales Associates &mdash; MTD Jul 1–1</div>
@@ -341,13 +302,12 @@ body {
   var ctx = canvas.getContext('2d');
   var days    = ['1'];
   var actuals = [5326.0];
-  var plans   = [17016.53];
   var W=900, H=200;
   canvas.width=W; canvas.height=H;
   var padL=56, padR=12, padT=8, padB=28;
   var cW=W-padL-padR, cH=H-padT-padB;
-  var MAX=18000, n=days.length;
-  var groupW=cW/n, bW=Math.max(groupW*0.3,5);
+  var MAX=8000, n=days.length;
+  var groupW=cW/n, bW=Math.max(groupW*0.45,5);
   var step=MAX/4;
   [0,step,step*2,step*3,MAX].forEach(function(v) {
     var y=padT+cH-(v/MAX)*cH;
@@ -357,12 +317,10 @@ body {
     ctx.fillText(v===0?'$0':'$'+(v/1000)+'K', padL-5, y+3.5);
   });
   days.forEach(function(day,i) {
-    var gx=padL+i*groupW, cx=gx+groupW/2;
-    var pH=(plans[i]/MAX)*cH;
-    if (plans[i]>0) { ctx.fillStyle='#C8CEDE'; ctx.fillRect(cx-bW,padT+cH-pH,bW,Math.max(pH,1)); }
+    var cx=padL+i*groupW+groupW/2;
     var aH=(actuals[i]/MAX)*cH;
     ctx.fillStyle=actuals[i]>0?'#2B52CC':'#F0F2F8';
-    ctx.fillRect(cx,padT+cH-aH,bW,Math.max(aH,1));
+    ctx.fillRect(cx-bW/2,padT+cH-aH,bW,Math.max(aH,1));
     ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif';
     ctx.textAlign='center'; ctx.fillText(day,cx,H-8);
   });
