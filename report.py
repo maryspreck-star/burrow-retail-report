@@ -84,7 +84,9 @@ def compute_dates():
         ly_yd=ly(yd), ly_yd_minus1=ly(yd_minus1),
         ly_lw_start=ly(lw_start), ly_lw_end=ly(lw_end),
         ly_mtd_start=ly(mtd_start),
-        week_label=f"Week of {lw_start.strftime('%b %-d')}–{lw_end.strftime('%-d, %Y')}",
+        week_label=(f"Week of {lw_start.strftime('%b %-d')}–{lw_end.strftime('%-d, %Y')}"
+                    if lw_start.month == lw_end.month
+                    else f"Week of {lw_start.strftime('%b %-d')}–{lw_end.strftime('%b %-d, %Y')}"),
     )
 
 # ── Looker ────────────────────────────────────────────────────────────────────
