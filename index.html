@@ -88,6 +88,28 @@ body {
   margin: 28px 0 12px; padding-bottom: 10px;
   border-bottom: 2px solid #2B52CC;
 }
+.closing-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 8px;
+}
+.closing-card {
+  background: #fff; border: 1px solid #D5D9E8; border-radius: 6px; padding: 14px 16px;
+}
+.closing-card-hdr {
+  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;
+}
+.closing-store-name { font-size: 13px; font-weight: 700; color: #1C2646; }
+.closing-date { font-size: 11px; color: #8892a4; }
+.closing-stats {
+  display: flex; gap: 18px; padding-bottom: 10px;
+  border-bottom: 1px solid #EBEDF5; margin-bottom: 10px;
+}
+.closing-stat { display: flex; flex-direction: column; }
+.closing-stat strong { font-size: 13px; font-weight: 700; color: #1C2646; }
+.closing-stat-lbl {
+  font-size: 10px; color: #8892a4; text-transform: uppercase; letter-spacing: 0.4px;
+}
+.closing-bullets { margin: 0; padding: 0 0 0 14px; font-size: 12px; color: #4B5568; line-height: 1.55; }
+.closing-bullets li { margin-bottom: 5px; }
 .footer {
   padding: 16px 28px; font-size: 11px; color: #8C93B0;
   border-top: 1px solid #D5D9E8; margin-top: 8px;
@@ -342,6 +364,57 @@ body {
     </thead>
     <tbody><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Soho</td><td style="text-align:left;">Aaron Bullard</td><td>$1,455</td><td>$129,000</td><td><span class="neg">1%</span></td></tr><tr><td style="text-align:left;">Erik Oftedal</td><td>$0</td><td>$64,667</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Boston</td><td style="text-align:left;">Keyla Valerio Piriz</td><td>$1,787</td><td>$0</td><td><span class="neutral">–</span></td></tr><tr><td style="text-align:left;">Casie Eifrig</td><td>$0</td><td>$126,000</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Chicago</td><td style="text-align:left;">Eleanor White</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr><tr><td style="text-align:left;">Emily Arrowsmith</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="1" style="font-weight:700;vertical-align:top;padding-top:11px;">Los Angeles</td><td style="text-align:left;">Savannah Archinal</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr></tbody>
   </table>
+  
+  <div class="hs-section-header">Store Closing Notes &mdash; Jul 1</div>
+  <div class="closing-grid">
+  <div class="closing-card">
+    <div class="closing-card-hdr">
+      <span class="closing-store-name">Soho</span>
+      <span class="closing-date">Jul 1</span>
+    </div>
+    <div class="closing-stats">
+      <span class="closing-stat"><strong>$1,455</strong><span class="closing-stat-lbl">Sales</span></span>
+      <span class="closing-stat"><strong>2 appts / 9 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
+      <span class="closing-stat"><strong>3</strong><span class="closing-stat-lbl">Draft Orders</span></span>
+    </div>
+    <ul class="closing-bullets"><li>Caren reached out to complete her second purchase. She previously purchased Nomad for her primary home; this order is an Ember Pro sofa for her beach house.</li><li>Salimah stopped in with her husband to check out Opera in person. After some discussion over size and color, they ordered the media console in Oak.</li><li>Mitchel came in to check out the Range Pro. After sitting on both, he actually preferred the Union Pro — a little more upright while still loungy.</li></ul>
+  </div>
+  <div class="closing-card">
+    <div class="closing-card-hdr">
+      <span class="closing-store-name">Boston</span>
+      <span class="closing-date">Jul 1</span>
+    </div>
+    <div class="closing-stats">
+      <span class="closing-stat"><strong>$1,280</strong><span class="closing-stat-lbl">Sales</span></span>
+      <span class="closing-stat"><strong>8 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
+      <span class="closing-stat"><strong>0</strong><span class="closing-stat-lbl">Draft Orders</span></span>
+    </div>
+    <ul class="closing-bullets"><li>Slower day due to the heat (91°F) — foot traffic was intentionally low.</li><li>Heavy outbound outreach day — 48 messages to swatches, former leads, and beginning-of-month follow-ups.</li><li>Maggie stopped in with her husband and purchased a Nomad loveseat and ottoman in Georgia Clay.</li></ul>
+  </div>
+  <div class="closing-card">
+    <div class="closing-card-hdr">
+      <span class="closing-store-name">Chicago</span>
+      <span class="closing-date">Jul 1</span>
+    </div>
+    <div class="closing-stats">
+      <span class="closing-stat"><strong>$0</strong><span class="closing-stat-lbl">Sales</span></span>
+      <span class="closing-stat"><strong>1 virtual</strong><span class="closing-stat-lbl">Traffic</span></span>
+      <span class="closing-stat"><strong>0</strong><span class="closing-stat-lbl">Draft Orders</span></span>
+    </div>
+    <ul class="closing-bullets"><li>Foot traffic suffered due to extreme heat — 94°F with a 101°F feels-like temperature.</li><li>Had a Zoom meeting with Talia, looking at Nomad for a nonprofit workspace. Interested in a 6-piece sectional; will follow up Monday after confirming budget approval.</li></ul>
+  </div>
+  <div class="closing-card">
+    <div class="closing-card-hdr">
+      <span class="closing-store-name">Los Angeles</span>
+      <span class="closing-date">Jul 1</span>
+    </div>
+    <div class="closing-stats">
+      <span class="closing-stat"><strong>$0</strong><span class="closing-stat-lbl">Sales</span></span>
+      <span class="closing-stat"><strong>5 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
+      <span class="closing-stat"><strong>2</strong><span class="closing-stat-lbl">Draft Orders</span></span>
+    </div>
+    <ul class="closing-bullets"><li>Walk-in guests interested in Title bookshelves and Index wall shelf.</li><li>High volume of CX inquiries throughout the day.</li><li>Continued conversation with Kevin, interested in a white/neutral sofa — reviewed OKEO-TEK certification and mailed swatches.</li></ul>
+  </div></div>
 
 </div>
 
