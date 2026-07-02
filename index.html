@@ -277,6 +277,73 @@ body {
   </div>
 
   
+  <div class="section-label">MTD Store Traffic &mdash; Jul 2026</div>
+  <div class="pacing-grid">
+      <div class="pacing-card">
+        <div class="pacing-store">Soho</div>
+        <div class="pacing-actual">9</div>
+        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="pos">▲ 80% vs LY</span></div>
+        <div class="pacing-nums" style="margin-top:4px;">CVR: 22.2% &nbsp;·&nbsp; <span class="neg">▼ 44% vs LY</span></div>
+      </div>
+      <div class="pacing-card">
+        <div class="pacing-store">Boston</div>
+        <div class="pacing-actual">0</div>
+        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
+        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
+      </div>
+      <div class="pacing-card">
+        <div class="pacing-store">Chicago</div>
+        <div class="pacing-actual">0</div>
+        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
+        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
+      </div>
+      <div class="pacing-card">
+        <div class="pacing-store">Los Angeles</div>
+        <div class="pacing-actual">0</div>
+        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
+        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">– vs LY</span></div>
+      </div></div>
+  
+  <div class="chart-wrap" style="margin-top:12px;">
+    <div class="chart-legend">
+      <span><span class="dot" style="background:#5B7FD8;"></span>Daily Visitors</span>
+    </div>
+    <canvas id="trafficChart" style="width:100%;height:auto;display:block;"></canvas>
+  </div>
+<script>
+(function() {
+  var canvas = document.getElementById('trafficChart');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var days = ['1'];
+  var vals = [9];
+  var W=900, H=160; canvas.width=W; canvas.height=H;
+  var padL=44, padR=12, padT=8, padB=28;
+  var cW=W-padL-padR, cH=H-padT-padB;
+  var MAX=20, n=days.length;
+  var groupW=cW/n, bW=Math.max(groupW*0.45,4);
+  var step=MAX/4;
+  [0,step,step*2,step*3,MAX].forEach(function(v) {
+    var y=padT+cH-(v/MAX)*cH;
+    ctx.save(); ctx.strokeStyle='#EBEDF5'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+cW,y); ctx.stroke(); ctx.restore();
+    ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif'; ctx.textAlign='right';
+    ctx.fillText(Math.round(v), padL-4, y+3.5);
+  });
+  days.forEach(function(day,i) {
+    var cx=padL+i*groupW+groupW/2;
+    var vH=(vals[i]/MAX)*cH;
+    ctx.fillStyle=vals[i]>0?'#5B7FD8':'#F0F2F8';
+    ctx.fillRect(cx-bW/2,padT+cH-vH,bW,Math.max(vH,1));
+    ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif';
+    ctx.textAlign='center'; ctx.fillText(day,cx,H-8);
+  });
+  ctx.strokeStyle='#D5D9E8'; ctx.lineWidth=1; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(padL,padT+cH); ctx.lineTo(padL+cW,padT+cH); ctx.stroke();
+})();
+</script>
+  
+  
   
   <div class="section-label">Sales Associates &mdash; MTD Jul 1–1</div>
   <table class="tbl">
