@@ -1,0 +1,30 @@
+name: Burrow Retail Monday Report
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run report
+        env:
+          LOOKER_BASE_URL:      ${{ secrets.LOOKER_BASE_URL }}
+          LOOKER_CLIENT_ID:     ${{ secrets.LOOKER_CLIENT_ID }}
+          LOOKER_CLIENT_SECRET: ${{ secrets.LOOKER_CLIENT_SECRET }}
+          SLACK_WEBHOOK_URL:    ${{ secrets.SLACK_WEBHOOK_URL }}
+          BW_HUBSPOT_TOKEN:     ${{ secrets.BW_HUBSPOT_TOKEN }}
+          GITHUB_TOKEN:         ${{ secrets.GITHUB_TOKEN }}
+        run: python report.py
