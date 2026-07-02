@@ -52,11 +52,11 @@ body {
 }
 .tbl th {
   background: #F0F2F8; font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.8px; color: #6B718F; padding: 8px 12px; text-align: right; white-space: nowrap;
+  letter-spacing: 0.8px; color: #6B718F; padding: 8px 12px; text-align: center; white-space: nowrap;
 }
 .tbl th:first-child { text-align: left; }
 .tbl td {
-  padding: 9px 12px; text-align: right; border-bottom: 1px solid #EBEDF5;
+  padding: 9px 12px; text-align: center; border-bottom: 1px solid #EBEDF5;
   font-size: 12px; white-space: nowrap;
 }
 .tbl td:first-child { text-align: left; }
@@ -222,10 +222,11 @@ body {
     </tbody>
   </table>
 
-  <div class="section-label">MTD Daily Revenue &mdash; Jul 2026</div>
+  <div class="section-label">MTD Daily Revenue vs Plan &mdash; Jul 2026</div>
   <div class="chart-wrap">
     <div class="chart-legend">
       <span><span class="dot" style="background:#2B52CC;"></span>Actual Revenue</span>
+      <span><span class="dot" style="background:#C8CEDE;"></span>Retail Forecast</span>
     </div>
     <canvas id="dailyChart" style="width:100%;height:auto;display:block;"></canvas>
   </div>
@@ -302,12 +303,13 @@ body {
   var ctx = canvas.getContext('2d');
   var days    = ['1'];
   var actuals = [5326.0];
+  var plans   = [14444.0];
   var W=900, H=200;
   canvas.width=W; canvas.height=H;
   var padL=56, padR=12, padT=8, padB=28;
   var cW=W-padL-padR, cH=H-padT-padB;
-  var MAX=8000, n=days.length;
-  var groupW=cW/n, bW=Math.max(groupW*0.45,5);
+  var MAX=16000, n=days.length;
+  var groupW=cW/n, bW=Math.max(groupW*0.3,5);
   var step=MAX/4;
   [0,step,step*2,step*3,MAX].forEach(function(v) {
     var y=padT+cH-(v/MAX)*cH;
@@ -318,9 +320,11 @@ body {
   });
   days.forEach(function(day,i) {
     var cx=padL+i*groupW+groupW/2;
+    var pH=(plans[i]/MAX)*cH;
+    if (plans[i]>0) { ctx.fillStyle='#C8CEDE'; ctx.fillRect(cx-bW,padT+cH-pH,bW,Math.max(pH,1)); }
     var aH=(actuals[i]/MAX)*cH;
     ctx.fillStyle=actuals[i]>0?'#2B52CC':'#F0F2F8';
-    ctx.fillRect(cx-bW/2,padT+cH-aH,bW,Math.max(aH,1));
+    ctx.fillRect(cx,padT+cH-aH,bW,Math.max(aH,1));
     ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif';
     ctx.textAlign='center'; ctx.fillText(day,cx,H-8);
   });
