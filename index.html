@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Burrow Retail &mdash; Week of Jun 25–Jul 1, 2026</title>
+<title>Burrow Retail &mdash; Week of Jun 29–Jul 5, 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -21,7 +21,6 @@ body {
 .perf-summary {
   background: white; border: 1px solid #D5D9E8; border-radius: 6px;
   padding: 16px 20px; font-size: 13px; line-height: 1.7; color: #2C3252;
-  text-align: center;
 }
 .perf-summary p { margin-bottom: 10px; }
 .perf-summary p:last-child { margin-bottom: 0; }
@@ -46,17 +45,26 @@ body {
 .kpi-val { font-size: 14px; font-weight: 600; }
 .kpi-delta { font-size: 11px; color: #6B718F; margin-top: 1px; }
 .pos { color: #1A7F5A; } .neg { color: #B84040; } .neutral { color: #6B718F; }
+.plan-section { margin-top: 12px; padding-top: 12px; border-top: 1px solid #EBEDF5; }
+.plan-header {
+  display: flex; justify-content: space-between; font-size: 11px;
+  color: #6B718F; margin-bottom: 6px;
+}
+.plan-bar-track { background: #EBEDF5; border-radius: 3px; height: 7px; overflow: hidden; }
+.plan-bar-fill  { background: #2B52CC; height: 100%; border-radius: 3px; }
+.plan-bar-fill.over { background: #1A7F5A; }
+.plan-detail { font-size: 11px; color: #6B718F; margin-top: 5px; text-align: right; }
 .tbl {
   width: 100%; border-collapse: collapse; background: white;
   border: 1px solid #D5D9E8; border-radius: 6px; overflow: hidden;
 }
 .tbl th {
   background: #F0F2F8; font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.8px; color: #6B718F; padding: 8px 12px; text-align: center; white-space: nowrap;
+  letter-spacing: 0.8px; color: #6B718F; padding: 8px 12px; text-align: right; white-space: nowrap;
 }
 .tbl th:first-child { text-align: left; }
 .tbl td {
-  padding: 9px 12px; text-align: center; border-bottom: 1px solid #EBEDF5;
+  padding: 9px 12px; text-align: right; border-bottom: 1px solid #EBEDF5;
   font-size: 12px; white-space: nowrap;
 }
 .tbl td:first-child { text-align: left; }
@@ -83,33 +91,14 @@ body {
 .pacing-bar-fill  { height: 100%; border-radius: 4px; }
 .fill-ahead { background: #1A7F5A; } .fill-on { background: #2B52CC; } .fill-risk { background: #C47A15; }
 .pacing-nums { font-size: 11px; color: #6B718F; }
-.hs-section-header {
-  font-size: 15px; font-weight: 700; color: #1C2646; letter-spacing: -0.2px;
-  margin: 28px 0 12px; padding-bottom: 10px;
-  border-bottom: 2px solid #2B52CC;
-}
-.closing-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 8px;
-}
-.closing-card {
-  background: #fff; border: 1px solid #D5D9E8; border-radius: 6px; padding: 14px 16px;
-}
-.closing-card-hdr {
-  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;
-}
-.closing-store-name { font-size: 13px; font-weight: 700; color: #1C2646; }
-.closing-date { font-size: 11px; color: #8892a4; }
-.closing-stats {
-  display: flex; gap: 18px; padding-bottom: 10px;
-  border-bottom: 1px solid #EBEDF5; margin-bottom: 10px;
-}
-.closing-stat { display: flex; flex-direction: column; }
-.closing-stat strong { font-size: 13px; font-weight: 700; color: #1C2646; }
-.closing-stat-lbl {
-  font-size: 10px; color: #8892a4; text-transform: uppercase; letter-spacing: 0.4px;
-}
-.closing-bullets { margin: 0; padding: 0 0 0 14px; font-size: 12px; color: #4B5568; line-height: 1.55; }
-.closing-bullets li { margin-bottom: 5px; }
+.hs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+.hs-card { background: white; border: 1px solid #D5D9E8; border-radius: 6px; padding: 14px 16px; }
+.hs-store { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #6B718F; margin-bottom: 4px; }
+.hs-pct { font-size: 26px; font-weight: 700; color: #1A1E2E; }
+.hs-bar-track { background: #EBEDF5; border-radius: 4px; height: 6px; overflow: hidden; margin: 8px 0 6px; }
+.hs-bar-fill { height: 100%; border-radius: 4px; background: #2B52CC; }
+.hs-bar-fill.over { background: #1A7F5A; }
+.hs-nums { font-size: 11px; color: #6B718F; }
 .footer {
   padding: 16px 28px; font-size: 11px; color: #8C93B0;
   border-top: 1px solid #D5D9E8; margin-top: 8px;
@@ -121,93 +110,123 @@ body {
 <div class="header">
   <div>
     <div class="header-title">Burrow Retail</div>
-    <div class="header-sub">Weekly Report &mdash; Week of Jun 25–Jul 1, 2026</div>
+    <div class="header-sub">Weekly Report &mdash; Week of Jun 29–Jul 5, 2026</div>
   </div>
   <div class="header-right">
-    Data through Wed Jul 1, 2026<br>
+    Data through Sun Jul 5, 2026<br>
     Soho &middot; Boston &middot; Chicago &middot; Los Angeles
   </div>
 </div>
 
 <div class="content">
 
-  <div class="section-label">Performance Summary</div><div class="perf-summary"><p>MTD retail revenue of $5,326 is tracking −69% vs plan and ▼ 77% vs last year through July 1. Last week (Jun 25–Jul 1) came in at $81,813, −27% vs plan and ▲ 34% vs LY (44 orders, AOV $1,859). Yesterday (Wed Jul 1): $5,326 — ▼ 77% vs LY, −69% vs plan, 4 orders.</p><p>Store MTD breakdown: Boston ($3,067, −25% vs plan, ▼ 81% vs LY); Soho ($2,259, −64% vs plan, ▼ 38% vs LY); Chicago ($0, −100% vs plan, ▼ 100% vs LY); Los Angeles ($0, −100% vs plan).</p></div>
+  <div class="section-label">Performance Summary</div><div class="perf-summary"><p>MTD retail revenue of $38,426 is tracking −70% vs plan and ▼ 58% vs last year through July 5. Last week (Jun 29–5) came in at $70,843, −44% vs plan and ▼ 36% vs LY (37 orders, AOV $1,915). Yesterday (Sun Jul 5): $16,924 — ▼ 48% vs LY, −55% vs plan, 10 orders.</p><p>Store MTD breakdown: Boston ($13,169, −57% vs plan, ▼ 70% vs LY); Soho ($12,571, −73% vs plan, ▼ 47% vs LY); Chicago ($10,014, −69% vs plan, ▼ 24% vs LY); Los Angeles ($2,672, −84% vs plan, ▼ 76% vs LY).</p><p>Top collections MTD: Nomad Plus $8,575 (38%, ▲ 426% vs LY), Union Pro $2,567 (11%), Union $2,078 (9%, ▼ 62% vs LY).</p></div>
 
   <div class="section-label">Performance Overview</div>
   <div class="period-grid">
     
     <div class="card">
-      <div class="card-period">Yesterday &mdash; Wed Jul 1</div>
+      <div class="card-period">Yesterday &mdash; Sun Jul 5</div>
       <div class="kpi">
         <span class="kpi-name">Revenue</span>
         <div class="kpi-right">
-          <div class="kpi-val">$5,326</div>
-          <div class="kpi-delta"><span class="neg">▼ 77% vs LY</span></div>
+          <div class="kpi-val">$16,924</div>
+          <div class="kpi-delta"><span class="neg">▼ 48% vs LY</span></div>
         </div>
       </div>
       <div class="kpi">
         <span class="kpi-name">Orders</span>
         <div class="kpi-right">
-          <div class="kpi-val">4</div>
-          <div class="kpi-delta"><span class="neg">▼ 73% vs LY</span></div>
+          <div class="kpi-val">10</div>
+          <div class="kpi-delta"><span class="neg">▼ 50% vs LY</span></div>
         </div>
       </div>
       <div class="kpi">
         <span class="kpi-name">AOV</span>
         <div class="kpi-right">
-          <div class="kpi-val">$1,332</div>
-          <div class="kpi-delta"><span class="neg">▼ 14% vs LY</span></div>
+          <div class="kpi-val">$1,692</div>
+          <div class="kpi-delta"><span class="pos">▲ 4% vs LY</span></div>
         </div>
+      </div>
+      <div class="plan-section">
+        <div class="plan-header">
+          <span>vs Plan (Jul 5)</span>
+          <strong class="neg">−55%</strong>
+        </div>
+        <div class="plan-bar-track">
+          <div class="plan-bar-fill" style="width:45%;"></div>
+        </div>
+        <div class="plan-detail">$16,924 / $37,580 plan</div>
       </div>
     </div>
     
     <div class="card">
-      <div class="card-period">Last Week &mdash; Jun 25–Jul 1</div>
+      <div class="card-period">Last Week &mdash; Jun 29–5</div>
       <div class="kpi">
         <span class="kpi-name">Revenue</span>
         <div class="kpi-right">
-          <div class="kpi-val">$81,813</div>
+          <div class="kpi-val">$70,843</div>
+          <div class="kpi-delta"><span class="neg">▼ 36% vs LY</span></div>
+        </div>
+      </div>
+      <div class="kpi">
+        <span class="kpi-name">Orders</span>
+        <div class="kpi-right">
+          <div class="kpi-val">37</div>
+          <div class="kpi-delta"><span class="neg">▼ 52% vs LY</span></div>
+        </div>
+      </div>
+      <div class="kpi">
+        <span class="kpi-name">AOV</span>
+        <div class="kpi-right">
+          <div class="kpi-val">$1,915</div>
           <div class="kpi-delta"><span class="pos">▲ 34% vs LY</span></div>
         </div>
       </div>
-      <div class="kpi">
-        <span class="kpi-name">Orders</span>
-        <div class="kpi-right">
-          <div class="kpi-val">44</div>
-          <div class="kpi-delta"><span class="neg">▼ 2% vs LY</span></div>
+      <div class="plan-section">
+        <div class="plan-header">
+          <span>vs Plan (Jun 29–5, 2026)</span>
+          <strong class="neg">−44%</strong>
         </div>
-      </div>
-      <div class="kpi">
-        <span class="kpi-name">AOV</span>
-        <div class="kpi-right">
-          <div class="kpi-val">$1,859</div>
-          <div class="kpi-delta"><span class="pos">▲ 37% vs LY</span></div>
+        <div class="plan-bar-track">
+          <div class="plan-bar-fill" style="width:56%;"></div>
         </div>
+        <div class="plan-detail">$70,843 / $126,212 plan</div>
       </div>
     </div>
     
     <div class="card">
-      <div class="card-period">MTD &mdash; Jul 1–1</div>
+      <div class="card-period">MTD &mdash; Jul 1–5</div>
       <div class="kpi">
         <span class="kpi-name">Revenue</span>
         <div class="kpi-right">
-          <div class="kpi-val">$5,326</div>
-          <div class="kpi-delta"><span class="neg">▼ 77% vs LY</span></div>
+          <div class="kpi-val">$38,426</div>
+          <div class="kpi-delta"><span class="neg">▼ 58% vs LY</span></div>
         </div>
       </div>
       <div class="kpi">
         <span class="kpi-name">Orders</span>
         <div class="kpi-right">
-          <div class="kpi-val">4</div>
-          <div class="kpi-delta"><span class="neg">▼ 73% vs LY</span></div>
+          <div class="kpi-val">24</div>
+          <div class="kpi-delta"><span class="neg">▼ 60% vs LY</span></div>
         </div>
       </div>
       <div class="kpi">
         <span class="kpi-name">AOV</span>
         <div class="kpi-right">
-          <div class="kpi-val">$1,332</div>
-          <div class="kpi-delta"><span class="neg">▼ 14% vs LY</span></div>
+          <div class="kpi-val">$1,601</div>
+          <div class="kpi-delta"><span class="pos">▲ 5% vs LY</span></div>
         </div>
+      </div>
+      <div class="plan-section">
+        <div class="plan-header">
+          <span>vs Plan (Jul 1–5)</span>
+          <strong class="neg">−70%</strong>
+        </div>
+        <div class="plan-bar-track">
+          <div class="plan-bar-fill" style="width:30%;"></div>
+        </div>
+        <div class="plan-detail">$38,426 / $126,212 plan</div>
       </div>
     </div>
   </div>
@@ -219,208 +238,109 @@ body {
       <tr>
         <th>Store</th>
         <th>Yesterday</th><th>vs LY</th>
-        <th class="col-divider">Last Week (Jun 25–Jul 1)</th><th>vs LY</th>
+        <th class="col-divider">Last Week (Jun 29–5)</th><th>vs LY</th>
         <th class="col-divider">MTD</th><th>vs Plan</th><th>vs LY</th>
       </tr>
     </thead>
     <tbody>
       <tr class="total-row">
         <td>Total Retail</td>
-        <td>$5,326</td>
-        <td><span class="neg">▼ 77%</span></td>
-        <td class="col-divider">$81,813</td>
-        <td><span class="pos">▲ 34%</span></td>
-        <td class="col-divider">$5,326</td>
-        <td><span class="neg">−69%</span></td>
-        <td><span class="neg">▼ 77%</span></td>
+        <td>$16,924</td>
+        <td><span class="neg">▼ 48%</span></td>
+        <td class="col-divider">$70,843</td>
+        <td><span class="neg">▼ 36%</span></td>
+        <td class="col-divider">$38,426</td>
+        <td><span class="neg">−70%</span></td>
+        <td><span class="neg">▼ 58%</span></td>
       </tr>
-      <tr><td><span class="store-name">Soho</span></td><td>$2,259</td><td><span class="neg">▼ 38%</span></td><td class="col-divider">$22,647</td><td><span class="pos">▲ 285%</span></td><td class="col-divider">$2,259</td><td><span class="neg">−64%</span></td><td><span class="neg">▼ 38%</span></td></tr>
-      <tr><td><span class="store-name">Boston</span></td><td>$3,067</td><td><span class="neg">▼ 81%</span></td><td class="col-divider">$17,268</td><td><span class="neg">▼ 7%</span></td><td class="col-divider">$3,067</td><td><span class="neg">−25%</span></td><td><span class="neg">▼ 81%</span></td></tr>
-      <tr><td><span class="store-name">Chicago</span></td><td>$0</td><td><span class="neg">▼ 100%</span></td><td class="col-divider">$25,159</td><td><span class="pos">▲ 44%</span></td><td class="col-divider">$0</td><td><span class="neg">−100%</span></td><td><span class="neg">▼ 100%</span></td></tr>
-      <tr><td><span class="store-name">Los Angeles</span></td><td>$0</td><td><span class="neg">–</span></td><td class="col-divider">$16,738</td><td><span class="neg">▼ 13%</span></td><td class="col-divider">$0</td><td><span class="neg">−100%</span></td><td><span class="neg">–</span></td></tr>
+      <tr><td><span class="store-name">Soho</span></td><td>$7,745</td><td><span class="pos">▲ 32%</span></td><td class="col-divider">$17,620</td><td><span class="neg">▼ 30%</span></td><td class="col-divider">$12,571</td><td><span class="neg">−73%</span></td><td><span class="neg">▼ 47%</span></td></tr>
+      <tr><td><span class="store-name">Boston</span></td><td>$3,270</td><td><span class="neg">▼ 78%</span></td><td class="col-divider">$20,398</td><td><span class="neg">▼ 56%</span></td><td class="col-divider">$13,169</td><td><span class="neg">−57%</span></td><td><span class="neg">▼ 70%</span></td></tr>
+      <tr><td><span class="store-name">Chicago</span></td><td>$4,454</td><td><span class="pos">▲ 7%</span></td><td class="col-divider">$20,194</td><td><span class="neg">▼ 13%</span></td><td class="col-divider">$10,014</td><td><span class="neg">−69%</span></td><td><span class="neg">▼ 24%</span></td></tr>
+      <tr><td><span class="store-name">Los Angeles</span></td><td>$1,455</td><td><span class="neg">▼ 82%</span></td><td class="col-divider">$12,631</td><td><span class="neg">▼ 18%</span></td><td class="col-divider">$2,672</td><td><span class="neg">−84%</span></td><td><span class="neg">▼ 76%</span></td></tr>
     </tbody>
   </table>
+
+  
+  <div class="section-label">MTD Pacing to Plan &mdash; Jul 2026</div>
+  <div class="pacing-grid">
+    
+      <div class="pacing-card">
+        <div class="pacing-store">Soho</div>
+        <div class="pacing-actual">$12,571</div>
+        <span class="pacing-badge badge-risk">At Risk</span>
+        <div class="pacing-bar-track">
+          <div class="pacing-bar-fill fill-risk" style="width:27%;"></div>
+        </div>
+        <div class="pacing-nums">27% of plan &nbsp;·&nbsp; Plan: $46,727</div>
+      </div>
+    
+      <div class="pacing-card">
+        <div class="pacing-store">Boston</div>
+        <div class="pacing-actual">$13,169</div>
+        <span class="pacing-badge badge-risk">At Risk</span>
+        <div class="pacing-bar-track">
+          <div class="pacing-bar-fill fill-risk" style="width:43%;"></div>
+        </div>
+        <div class="pacing-nums">43% of plan &nbsp;·&nbsp; Plan: $30,349</div>
+      </div>
+    
+      <div class="pacing-card">
+        <div class="pacing-store">Chicago</div>
+        <div class="pacing-actual">$10,014</div>
+        <span class="pacing-badge badge-risk">At Risk</span>
+        <div class="pacing-bar-track">
+          <div class="pacing-bar-fill fill-risk" style="width:31%;"></div>
+        </div>
+        <div class="pacing-nums">31% of plan &nbsp;·&nbsp; Plan: $32,758</div>
+      </div>
+    
+      <div class="pacing-card">
+        <div class="pacing-store">Los Angeles</div>
+        <div class="pacing-actual">$2,672</div>
+        <span class="pacing-badge badge-risk">At Risk</span>
+        <div class="pacing-bar-track">
+          <div class="pacing-bar-fill fill-risk" style="width:16%;"></div>
+        </div>
+        <div class="pacing-nums">16% of plan &nbsp;·&nbsp; Plan: $16,379</div>
+      </div>
+  </div>
 
   <div class="section-label">MTD Daily Revenue vs Plan &mdash; Jul 2026</div>
   <div class="chart-wrap">
     <div class="chart-legend">
       <span><span class="dot" style="background:#2B52CC;"></span>Actual Revenue</span>
-      <span><span class="dot" style="background:#C8CEDE;"></span>Retail Forecast</span>
+      <span><span class="dot" style="background:#C8CEDE;"></span>Daily Plan</span>
     </div>
     <canvas id="dailyChart" style="width:100%;height:auto;display:block;"></canvas>
   </div>
 
   
-  <div class="section-label">MTD Store Traffic &mdash; Jul 2026</div>
-  <div class="pacing-grid">
-      <div class="pacing-card">
-        <div class="pacing-store">Soho</div>
-        <div class="pacing-actual">9</div>
-        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="pos">▲ 80% vs LY</span></div>
-        <div class="pacing-nums" style="margin-top:4px;">CVR: 22.2% &nbsp;·&nbsp; <span class="neg">▼ 44% vs LY</span></div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Boston</div>
-        <div class="pacing-actual">0</div>
-        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
-        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Chicago</div>
-        <div class="pacing-actual">0</div>
-        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
-        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Los Angeles</div>
-        <div class="pacing-actual">0</div>
-        <div class="pacing-nums">Visitors &nbsp;·&nbsp; <span class="neg">▼ 100% vs LY</span></div>
-        <div class="pacing-nums" style="margin-top:4px;">CVR: 0.0% &nbsp;·&nbsp; <span class="neg">– vs LY</span></div>
-      </div></div>
-  
-  <div class="chart-wrap" style="margin-top:12px;">
-    <div class="chart-legend">
-      <span><span class="dot" style="background:#5B7FD8;"></span>Daily Visitors</span>
-    </div>
-    <canvas id="trafficChart" style="width:100%;height:auto;display:block;"></canvas>
-  </div>
-<script>
-(function() {
-  var canvas = document.getElementById('trafficChart');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var days = ['1'];
-  var vals = [9];
-  var W=900, H=160; canvas.width=W; canvas.height=H;
-  var padL=44, padR=12, padT=8, padB=28;
-  var cW=W-padL-padR, cH=H-padT-padB;
-  var MAX=20, n=days.length;
-  var groupW=cW/n, bW=Math.max(groupW*0.45,4);
-  var step=MAX/4;
-  [0,step,step*2,step*3,MAX].forEach(function(v) {
-    var y=padT+cH-(v/MAX)*cH;
-    ctx.save(); ctx.strokeStyle='#EBEDF5'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
-    ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+cW,y); ctx.stroke(); ctx.restore();
-    ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif'; ctx.textAlign='right';
-    ctx.fillText(Math.round(v), padL-4, y+3.5);
-  });
-  days.forEach(function(day,i) {
-    var cx=padL+i*groupW+groupW/2;
-    var vH=(vals[i]/MAX)*cH;
-    ctx.fillStyle=vals[i]>0?'#5B7FD8':'#F0F2F8';
-    ctx.fillRect(cx-bW/2,padT+cH-vH,bW,Math.max(vH,1));
-    ctx.fillStyle='#8C93B0'; ctx.font='9px -apple-system,sans-serif';
-    ctx.textAlign='center'; ctx.fillText(day,cx,H-8);
-  });
-  ctx.strokeStyle='#D5D9E8'; ctx.lineWidth=1; ctx.setLineDash([]);
-  ctx.beginPath(); ctx.moveTo(padL,padT+cH); ctx.lineTo(padL+cW,padT+cH); ctx.stroke();
-})();
-</script>
-  
-  
-  
-  <div class="hs-section-header">HubSpot Pacing &mdash; MTD Closed Won vs Monthly Goal</div>
-  <div class="pacing-grid">
-      <div class="pacing-card">
-        <div class="pacing-store">Soho</div>
-        <div class="pacing-actual">$1,455</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:1%;"></div>
-        </div>
-        <div class="pacing-nums">1% of goal &nbsp;·&nbsp; Goal: $193,667</div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Boston</div>
-        <div class="pacing-actual">$1,787</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:1%;"></div>
-        </div>
-        <div class="pacing-nums">1% of goal &nbsp;·&nbsp; Goal: $126,000</div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Chicago</div>
-        <div class="pacing-actual">$0</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:0%;"></div>
-        </div>
-        <div class="pacing-nums">0% of goal &nbsp;·&nbsp; Goal: $136,000</div>
-      </div>
-      <div class="pacing-card">
-        <div class="pacing-store">Los Angeles</div>
-        <div class="pacing-actual">$0</div>
-        <span class="pacing-badge badge-risk">At Risk</span>
-        <div class="pacing-bar-track">
-          <div class="pacing-bar-fill fill-risk" style="width:0%;"></div>
-        </div>
-        <div class="pacing-nums">0% of goal &nbsp;·&nbsp; Goal: $68,000</div>
-      </div></div>
-  
-  <table class="tbl" style="margin-top:14px;">
+  <div class="section-label">Collection Mix &mdash; MTD Jul 1–5</div>
+  <table class="tbl">
     <thead>
-      <tr><th>Store</th><th>Associate</th><th>MTD Closed Won</th><th>Monthly Goal</th><th>% to Goal</th></tr>
+      <tr>
+        <th>Collection</th><th>Revenue</th>
+        <th style="text-align:left;padding-left:8px;">Mix</th>
+        <th>Units</th><th>vs LY</th>
+      </tr>
     </thead>
-    <tbody><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Soho</td><td style="text-align:left;">Aaron Bullard</td><td>$1,455</td><td>$129,000</td><td><span class="neg">1%</span></td></tr><tr><td style="text-align:left;">Erik Oftedal</td><td>$0</td><td>$64,667</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Boston</td><td style="text-align:left;">Keyla Valerio Piriz</td><td>$1,787</td><td>$0</td><td><span class="neutral">–</span></td></tr><tr><td style="text-align:left;">Casie Eifrig</td><td>$0</td><td>$126,000</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Chicago</td><td style="text-align:left;">Eleanor White</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr><tr><td style="text-align:left;">Emily Arrowsmith</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr><tr><td rowspan="1" style="font-weight:700;vertical-align:top;padding-top:11px;">Los Angeles</td><td style="text-align:left;">Savannah Archinal</td><td>$0</td><td>$68,000</td><td><span class="neutral">0%</span></td></tr></tbody>
+    <tbody><tr><td>Nomad Plus</td><td>$8,575</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:95px;"></span>38%</td><td>6</td><td><span class="pos">▲ 426%</span></td></tr><tr><td>Union Pro</td><td>$2,567</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:28px;"></span>11%</td><td>1</td><td><span class="neutral">n/a</span></td></tr><tr><td>Union</td><td>$2,078</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:22px;"></span>9%</td><td>2</td><td><span class="neg">▼ 62%</span></td></tr><tr><td>Span</td><td>$1,787</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:20px;"></span>8%</td><td>1</td><td><span class="neg">▼ 57%</span></td></tr><tr><td>Opera</td><td>$1,608</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:18px;"></span>7%</td><td>2</td><td><span class="pos">▲ 115%</span></td></tr><tr><td>Ember Pro</td><td>$1,455</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:15px;"></span>6%</td><td>1</td><td><span class="neutral">n/a</span></td></tr><tr><td>Chorus</td><td>$1,285</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:15px;"></span>6%</td><td>1</td><td><span class="pos">▲ 7%</span></td></tr><tr><td>Range Plus</td><td>$1,217</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:12px;"></span>5%</td><td>1</td><td><span class="neg">▼ 10%</span></td></tr><tr><td>Serif</td><td>$1,112</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:12px;"></span>5%</td><td>4</td><td><span class="neutral">n/a</span></td></tr><tr><td>Prospect</td><td>$377</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:5px;"></span>2%</td><td>1</td><td><span class="neg">▼ 78%</span></td></tr><tr><td>Field</td><td>$345</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:5px;"></span>2%</td><td>1</td><td><span class="neg">▼ 95%</span></td></tr><tr><td>Range</td><td>$307</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:2px;"></span>1%</td><td>1</td><td><span class="neg">▼ 96%</span></td></tr><tr><td>No Collection</td><td>$119</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:2px;"></span>1%</td><td>1</td><td><span class="pos">▲ 60%</span></td></tr><tr><td>Nomad</td><td>$34</td><td style="text-align:left;padding-left:8px;"><span style="display:inline-block;height:6px;background:#D4C5B0;border-radius:2px;vertical-align:middle;margin-right:6px;width:1px;"></span>0%</td><td>1</td><td><span class="neg">▼ 100%</span></td></tr></tbody>
   </table>
   
-  <div class="hs-section-header">Store Closing Notes &mdash; Jul 1</div>
-  <div class="closing-grid">
-  <div class="closing-card">
-    <div class="closing-card-hdr">
-      <span class="closing-store-name">Soho</span>
-      <span class="closing-date">Jul 1</span>
-    </div>
-    <div class="closing-stats">
-      <span class="closing-stat"><strong>$1,455</strong><span class="closing-stat-lbl">Sales</span></span>
-      <span class="closing-stat"><strong>2 appts / 9 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
-      <span class="closing-stat"><strong>3</strong><span class="closing-stat-lbl">Draft Orders</span></span>
-    </div>
-    <ul class="closing-bullets"><li>Caren reached out to complete her second purchase. She previously purchased Nomad for her primary home; this order is an Ember Pro sofa for her beach house.</li><li>Salimah stopped in with her husband to check out Opera in person. After some discussion over size and color, they ordered the media console in Oak.</li><li>Mitchel came in to check out the Range Pro. After sitting on both, he actually preferred the Union Pro — a little more upright while still loungy.</li></ul>
-  </div>
-  <div class="closing-card">
-    <div class="closing-card-hdr">
-      <span class="closing-store-name">Boston</span>
-      <span class="closing-date">Jul 1</span>
-    </div>
-    <div class="closing-stats">
-      <span class="closing-stat"><strong>$1,280</strong><span class="closing-stat-lbl">Sales</span></span>
-      <span class="closing-stat"><strong>8 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
-      <span class="closing-stat"><strong>0</strong><span class="closing-stat-lbl">Draft Orders</span></span>
-    </div>
-    <ul class="closing-bullets"><li>Slower day due to the heat (91°F) — foot traffic was intentionally low.</li><li>Heavy outbound outreach day — 48 messages to swatches, former leads, and beginning-of-month follow-ups.</li><li>Maggie stopped in with her husband and purchased a Nomad loveseat and ottoman in Georgia Clay.</li></ul>
-  </div>
-  <div class="closing-card">
-    <div class="closing-card-hdr">
-      <span class="closing-store-name">Chicago</span>
-      <span class="closing-date">Jul 1</span>
-    </div>
-    <div class="closing-stats">
-      <span class="closing-stat"><strong>$0</strong><span class="closing-stat-lbl">Sales</span></span>
-      <span class="closing-stat"><strong>1 virtual</strong><span class="closing-stat-lbl">Traffic</span></span>
-      <span class="closing-stat"><strong>0</strong><span class="closing-stat-lbl">Draft Orders</span></span>
-    </div>
-    <ul class="closing-bullets"><li>Foot traffic suffered due to extreme heat — 94°F with a 101°F feels-like temperature.</li><li>Had a Zoom meeting with Talia, looking at Nomad for a nonprofit workspace. Interested in a 6-piece sectional; will follow up Monday after confirming budget approval.</li></ul>
-  </div>
-  <div class="closing-card">
-    <div class="closing-card-hdr">
-      <span class="closing-store-name">Los Angeles</span>
-      <span class="closing-date">Jul 1</span>
-    </div>
-    <div class="closing-stats">
-      <span class="closing-stat"><strong>$0</strong><span class="closing-stat-lbl">Sales</span></span>
-      <span class="closing-stat"><strong>5 walk-ins</strong><span class="closing-stat-lbl">Traffic</span></span>
-      <span class="closing-stat"><strong>2</strong><span class="closing-stat-lbl">Draft Orders</span></span>
-    </div>
-    <ul class="closing-bullets"><li>Walk-in guests interested in Title bookshelves and Index wall shelf.</li><li>High volume of CX inquiries throughout the day.</li><li>Continued conversation with Kevin, interested in a white/neutral sofa — reviewed OKEO-TEK certification and mailed swatches.</li></ul>
-  </div></div>
+  <div class="section-label">Sales Associates &mdash; MTD Jul 1–5</div>
+  <table class="tbl">
+    <thead>
+      <tr><th>Store</th><th>Associate</th><th>Revenue</th><th>Orders</th><th>AOV</th><th>Units</th></tr>
+    </thead>
+    <tbody><tr><td rowspan="2" style="font-weight:700;vertical-align:top;padding-top:11px;">Soho</td><td style="text-align:left;">Erik Oftedal</td><td>$9,347</td><td>4</td><td>$2,337</td><td>5</td></tr><tr><td style="text-align:left;">Aaron Bullard</td><td>$3,224</td><td>3</td><td>$1,075</td><td>3</td></tr><tr><td rowspan="3" style="font-weight:700;vertical-align:top;padding-top:11px;">Boston</td><td style="text-align:left;">Casie Eifrig</td><td>$9,214</td><td>7</td><td>$1,316</td><td>13</td></tr><tr><td style="text-align:left;">Delsie Lopez</td><td>$2,168</td><td>1</td><td>$2,168</td><td>2</td></tr><tr><td style="text-align:left;">Boston Burrow</td><td>$1,787</td><td>1</td><td>$1,787</td><td>1</td></tr><tr><td rowspan="4" style="font-weight:700;vertical-align:top;padding-top:11px;">Chicago</td><td style="text-align:left;">Emily Arrowsmith</td><td>$5,219</td><td>2</td><td>$2,610</td><td>6</td></tr><tr><td style="text-align:left;">Eleanor White</td><td>$4,454</td><td>2</td><td>$2,227</td><td>4</td></tr><tr><td style="text-align:left;">Dana Trombetta</td><td>$307</td><td>1</td><td>$307</td><td>1</td></tr><tr><td style="text-align:left;">nina angell</td><td>$34</td><td>1</td><td>$34</td><td>1</td></tr><tr><td rowspan="1" style="font-weight:700;vertical-align:top;padding-top:11px;">Los Angeles</td><td style="text-align:left;">Kinsey Austin</td><td>$2,672</td><td>2</td><td>$1,336</td><td>2</td></tr></tbody>
+  </table>
+  
 
 </div>
 
 <div class="footer">
-  Generated Thu Jul 2, 2026 &nbsp;&middot;&nbsp;
-  Data through Jul 1, 2026 &nbsp;&middot;&nbsp;
+  Generated Mon Jul 6, 2026 &nbsp;&middot;&nbsp;
+  Data through Jul 5, 2026 &nbsp;&middot;&nbsp;
   Source: Looker / Burrow model + HubSpot &nbsp;&middot;&nbsp;
   Filter: Retail channel
 </div>
@@ -430,14 +350,14 @@ body {
   var canvas = document.getElementById('dailyChart');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var days    = ['1'];
-  var actuals = [5326.0];
-  var plans   = [14444.0];
+  var days    = ['1', '2', '3', '4', '5'];
+  var actuals = [5326.0, 6222.0, 9954.0, 0, 16924.05];
+  var plans   = [17016.53, 18434.760000000002, 24817.76, 28363.27, 37580.15];
   var W=900, H=200;
   canvas.width=W; canvas.height=H;
   var padL=56, padR=12, padT=8, padB=28;
   var cW=W-padL-padR, cH=H-padT-padB;
-  var MAX=16000, n=days.length;
+  var MAX=38000, n=days.length;
   var groupW=cW/n, bW=Math.max(groupW*0.3,5);
   var step=MAX/4;
   [0,step,step*2,step*3,MAX].forEach(function(v) {
@@ -448,7 +368,7 @@ body {
     ctx.fillText(v===0?'$0':'$'+(v/1000)+'K', padL-5, y+3.5);
   });
   days.forEach(function(day,i) {
-    var cx=padL+i*groupW+groupW/2;
+    var gx=padL+i*groupW, cx=gx+groupW/2;
     var pH=(plans[i]/MAX)*cH;
     if (plans[i]>0) { ctx.fillStyle='#C8CEDE'; ctx.fillRect(cx-bW,padT+cH-pH,bW,Math.max(pH,1)); }
     var aH=(actuals[i]/MAX)*cH;
